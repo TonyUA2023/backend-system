@@ -18,7 +18,10 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json()); 
 
-// ... Conexión a DB ...
+// Conexión a la base de datos (Ejemplo: verifica si el pool está vivo)
+db.connect()
+    .then(() => console.log('Conexión a PostgreSQL establecida con éxito.'))
+    .catch(err => console.error('Error al conectar con PostgreSQL:', err.stack));
 
 // Rutas de prueba inicial
 app.get('/', (req, res) => {
